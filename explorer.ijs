@@ -45,6 +45,16 @@ startupd =. 1!:1 :: (''"_) startupfn =. < jpath '~config/startup.ijs'
 keyd =. 1!:1 :: (''"_) keyfn =. < jpath '~config/userkeys.ijs'
 startnborblank =. ((0=#) +. 'NB.' -: 3&{.)@deb@> startuplines =. <;.2 CR -.~ LF ,~^:(~: {:) startupd
 keynborblank =. ((0=#) +. 'NB.' -: 3&{.)@deb@> keylines =. <;.2 CR -.~ LF ,~^:(~: {:) keyd
+NB. Preserve leading comments in startup & user keys, so as to keep user-key legend
+startupdnew =. (; (*./\ startnborblank) # startuplines) , startup
+keydnew =. (; (*./\ keynborblank) # keylines) , pfs
+
+NB. If no change, tell the user so they'll stop doing this
+if.  (startupdnew -: startupd) *. (keydnew -: keyd) do.
+  smoutput 'This profile was already installed - no need to install again'
+  i. 0 0 return.
+end.
+
 if. 0 e. keynborblank , startnborblank do.
   if. 'yes' -.@-: wd 'mb query =mb_yes mb_no "Rewrite configuration?" "OK to replace your startup and user keys assignments?"' do.
     smoutput 'No changes made.'
@@ -52,19 +62,15 @@ if. 0 e. keynborblank , startnborblank do.
   end.
 end.
 
-NB. Preserve leading comments in startup & user keys, so as to keep user-key legend
-startupd =. (; (*./\ startnborblank) # startuplines) , startup
-keyd =. (; (*./\ keynborblank) # keylines) , pfs
-
 NB. Write out the startup and PFkey information
 try.
-  startupd 1!:2 startupfn
+  startupdnew 1!:2 startupfn
 catch.
   smoutput 'Error writing configuration file'
   i. 0 0 return.
 end.
 try.
-  keyd 1!:2 keyfn
+  keydnew 1!:2 keyfn
 catch.
   smoutput 'Error writing user-keys file'
   i. 0 0 return.

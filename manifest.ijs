@@ -5,7 +5,7 @@ PLATFORMS=: ''
 FILES=: 0 : 0
 explorer.ijs
 )
-RELEASE=: 'j803 j804'
+RELEASE=: 'j804'
 DEPENDS=: 0 : 0
 )
 DESCRIPTION=: 0 : 0

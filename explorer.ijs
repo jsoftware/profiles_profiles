@@ -24,12 +24,16 @@ debug/lint
 3 : 0 pkgstoload
 NB. Keep packages up-to-date
 load 'pacman'
+savlog =. LOG_jpacman_
+LOG_jpacman_ =: 0
+'update' jpkg ''
 newpkgs =. {."1 'shownotinstalled' jpkg ''
 newpkgs =. newpkgs , {."1 'showupgrade' jpkg ''
 if. #newpkgs do.
   smoutput 'Installing updated addons'
   'install' jpkg ;:^:_1 newpkgs
 end.
+LOG_jpacman_ =: savlog
 
 NB. Load the packages we need.  Load, not require, to get updates
 load ' ' (I. LF = y)} y

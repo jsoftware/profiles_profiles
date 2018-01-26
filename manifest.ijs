@@ -1,11 +1,11 @@
 NB. manifest for profiles
 CAPTION=: 'Suggested User Profiles'
-VERSION=: '1.0.4'
+VERSION=: '1.0.5'
 PLATFORMS=: ''
 FILES=: 0 : 0
 explorer.ijs
 )
-RELEASE=: 'j804 j805 j806'
+RELEASE=: 'j804 j805 j806 j807'
 DEPENDS=: 0 : 0
 )
 DESCRIPTION=: 0 : 0

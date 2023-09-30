@@ -1,6 +1,6 @@
 NB. manifest for profiles
 CAPTION=: 'Suggested User Profiles'
-VERSION=: '1.0.5'
+VERSION=: '1.0.6'
 PLATFORMS=: ''
 FILES=: 0 : 0
 explorer.ijs

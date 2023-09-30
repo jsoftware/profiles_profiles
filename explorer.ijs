@@ -46,7 +46,7 @@ load ' ' (I. LF = y)} y
 NB. Read the user's startup file and PF keys.
 NB. If there are non-comments, prompt for overwrite
 startupd =. 1!:1 :: (''"_) startupfn =. < jpath '~config/startup.ijs'
-keyd =. 1!:1 :: (''"_) keyfn =. < jpath '~config/userkeys.ijs'
+keyd =. 1!:1 :: (''"_) keyfn =. < jpath '~config/userkeys.cfg'
 startnborblank =. ((0=#) +. 'NB.' -: 3&{.)@deb@> startuplines =. <;.2 CR -.~ LF ,~^:(~: {:) startupd
 keynborblank =. ((0=#) +. 'NB.' -: 3&{.)@deb@> keylines =. <;.2 CR -.~ LF ,~^:(~: {:) keyd
 NB. Preserve leading comments in startup & user keys, so as to keep user-key legend
